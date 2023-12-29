@@ -5,6 +5,7 @@ import com.webtoucan.restdemo.service.CloudVendorService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/cloudvendor")
@@ -44,6 +45,20 @@ public class CloudVendorController {
     {
         cloudVendorService.updateCloudVendor(cloudVendor);
         return "Cloud Vendor updated successfully";
+    }
+
+    @PatchMapping("{vendorId}")
+    public String updateCloudVendorDetailsById(@PathVariable("vendorId") String vendorId, @RequestBody Map<Object,Object> objectMap)
+    {
+        cloudVendorService.updateCloudVendorWithMap(vendorId, objectMap);
+        return "Cloud Vendor partially updated successfully";
+    }
+
+    @PatchMapping("{vendorId}/{vendorName}")
+    public String updateCloudVendorDetailsById(@PathVariable("vendorId") String vendorId, @PathVariable("vendorName") String vendorName)
+    {
+        cloudVendorService.updateCloudVendorName(vendorId, vendorName);
+        return "Cloud Vendor name updated successfully";
     }
 
     @DeleteMapping("{vendorId}")
