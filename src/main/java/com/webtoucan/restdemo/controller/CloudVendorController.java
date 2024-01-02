@@ -1,7 +1,10 @@
 package com.webtoucan.restdemo.controller;
 
 import com.webtoucan.restdemo.model.CloudVendor;
+import com.webtoucan.restdemo.response.ResponseHandler;
 import com.webtoucan.restdemo.service.CloudVendorService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,9 +24,9 @@ public class CloudVendorController {
 
     // Read specific cloud vendor details from DB
     @GetMapping("{vendorId}")
-    public CloudVendor getCloudVendorDetails(@PathVariable("vendorId") String vendorId)
+    public ResponseEntity<Object> getCloudVendorDetails(@PathVariable("vendorId") String vendorId)
     {
-        return cloudVendorService.getCloudVendor(vendorId);
+        return ResponseHandler.responseBuilder("Requested vendor details are given here", HttpStatus.OK, cloudVendorService.getCloudVendor(vendorId));
     }
 
     // Read all cloud vendor details from DB
