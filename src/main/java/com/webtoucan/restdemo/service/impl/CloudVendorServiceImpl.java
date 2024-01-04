@@ -36,15 +36,17 @@ public class CloudVendorServiceImpl implements CloudVendorService {
     }
 
     @Override
-    public void createCloudVendor(CloudVendor cloudVendor) {
+    public String createCloudVendor(CloudVendor cloudVendor) {
         // More Business Logic
         cloudVendorRepository.save(cloudVendor);
+        return "Success";
     }
 
     @Override
-    public void updateCloudVendor(CloudVendor cloudVendor) {
+    public String updateCloudVendor(CloudVendor cloudVendor) {
         // More Business Logic
         cloudVendorRepository.save(cloudVendor);
+        return "Success";
     }
 
     @Override
@@ -72,9 +74,10 @@ public class CloudVendorServiceImpl implements CloudVendorService {
     }
 
     @Override
-    public void deleteCloudVendor(String cloudVendorId) {
+    public String deleteCloudVendor(String cloudVendorId) {
         // More Business Logic
         cloudVendorRepository.deleteById(cloudVendorId);
+        return "Success";
     }
 
 
